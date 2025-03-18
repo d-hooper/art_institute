@@ -1,5 +1,6 @@
 <script setup>
 import { AppState } from '@/AppState.js';
+import ArtCard from '@/components/ArtCard.vue';
 import { artworkService } from '@/services/ArtworkService.js';
 import { logger } from '@/utils/Logger.js';
 import { Pop } from '@/utils/Pop.js';
@@ -34,7 +35,8 @@ onMounted(() => {
   <section class="container">
     <div class="row">
       <div v-for="work in artwork" :key="work.id" class="col-md-4">
-        <img :src="work.imgUrls.small" :alt="work.altDescription" class="img-fluid">
+
+        <ArtCard :workProp="work" />
       </div>
     </div>
   </section>
