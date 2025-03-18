@@ -1,30 +1,44 @@
-<script setup >
+<script setup>
+import { AppState } from '@/AppState.js';
 import { artworkService } from '@/services/ArtworkService.js';
 import { logger } from '@/utils/Logger.js';
 import { Pop } from '@/utils/Pop.js';
-import { onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
 
+const artwork = computed(() => AppState.artwork)
 
-  async function getArtwork() {
-    try {
-      await artworkService.getArtwork()
-    }
-    catch (error){
-      Pop.error(error, 'COULD NOT GET ARTWORK');
-      logger.error(error, 'COULD NOT GET ARTWORK');
-    }
+async function getArtwork() {
+  try {
+    await artworkService.getArtwork()
   }
+  catch (error) {
+    Pop.error(error, 'COULD NOT GET ARTWORK');
+    logger.error(error, 'COULD NOT GET ARTWORK');
+  }
+}
 
-  onMounted(() => {
-    getArtwork()
-  })
+onMounted(() => {
+  getArtwork()
+})
 
 </script>
 
 <template>
-  <div></div>
+  <section class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>Institute of Fine Arts Online Catalog</h1>
+      </div>
+    </div>
+  </section>
+  <section class="container">
+    <div class="row">
+      <div v-for="work in artwork" :key="work.id" class="col-md-4">
+        <img :src="work.imgUrls.small" :alt="work.altDescription" class="img-fluid">
+      </div>
+    </div>
+  </section>
+  <section class="container"></section>
 </template>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>
