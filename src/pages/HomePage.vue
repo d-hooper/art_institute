@@ -1,6 +1,7 @@
 <script setup>
 import { AppState } from '@/AppState.js';
 import ArtCard from '@/components/ArtCard.vue';
+import PageNavigation from '@/components/PageNavigation.vue';
 import { artworkService } from '@/services/ArtworkService.js';
 import { logger } from '@/utils/Logger.js';
 import { Pop } from '@/utils/Pop.js';
@@ -30,17 +31,26 @@ onMounted(() => {
       <div class="col-12">
         <h1 class="fw-bold">Institute of Fine Arts Online Catalog</h1>
       </div>
+      <div class="col-12">
+        <PageNavigation />
+      </div>
     </div>
   </section>
   <section class="container">
     <div class="row">
       <div v-for="work in artwork" :key="work.id" class="col-md-4">
-
+        
         <ArtCard :workProp="work" />
       </div>
     </div>
   </section>
-  <section class="container"></section>
+  <section class="container">
+    <div class="row">
+      <div class="col-12">
+        <PageNavigation />
+      </div>
+    </div>
+  </section>
 </template>
 
 <style scoped lang="scss"></style>

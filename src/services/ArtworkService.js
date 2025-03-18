@@ -4,13 +4,22 @@ import { AppState } from "@/AppState.js"
 import { WorkOfArt } from "@/models/WorkOfArt.js"
 
 class ArtworkService {
+  async changePage(page) {
+    const response = await api.get(`api/artworks?page=${page}`) 
+    this.handleResponse(response)
+
+  }
   
   async getArtwork() {
     const response = await api.get('api/artworks')
+    this. handleResponse(response)
+  }
+
+   handleResponse(response) {
     const artwork = response.data.artworks.map(pojo => new WorkOfArt(pojo))
-    logger.log(response.data)
     AppState.artwork = artwork
-    logger.log(AppState.artwork)
+    AppState.currentPage = response.data.page
+    AppState.pageCount = response.data.pages
   }
 
 }
