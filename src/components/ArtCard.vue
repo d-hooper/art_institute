@@ -2,13 +2,14 @@
 import { WorkOfArt } from '@/models/WorkOfArt.js';
 
 defineProps({
-  workProp: { type: WorkOfArt, required: true}
+  workProp: { type: WorkOfArt, required: true }
 })
+
 </script>
 
 
 <template>
-      <img :src="workProp.imgUrls.small" :alt="workProp.altDescription" class="img-fluid">
+  <img :src="workProp.imgUrls.small" :alt="workProp.altDescription" class="img-fluid">
 </template>
 
 

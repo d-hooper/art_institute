@@ -1,9 +1,12 @@
 <script setup>
+import { onMounted } from 'vue';
 import { AppState } from './AppState.js';
 import Navbar from './components/Navbar.vue';
 import { RouterView } from 'vue-router';
 
+onMounted(()=>{
 
+})
 </script>
 
 <template>

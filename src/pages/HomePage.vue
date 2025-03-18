@@ -20,7 +20,7 @@ async function getArtwork() {
 
 onMounted(() => {
   getArtwork()
-})
+});
 
 </script>
 
@@ -28,7 +28,7 @@ onMounted(() => {
   <section class="container">
     <div class="row">
       <div class="col-12">
-        <h1>Institute of Fine Arts Online Catalog</h1>
+        <h1 class="fw-bold">Institute of Fine Arts Online Catalog</h1>
       </div>
     </div>
   </section>
